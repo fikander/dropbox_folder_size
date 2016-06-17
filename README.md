@@ -2,13 +2,26 @@
 
 Simple tool to print sizes of Dropbox folders sorted by size.
 
-# Usage
+# Usage (virtualenv)
+
+	virtualenv venv
+	. venv/bin/activate
+	cd dropbox-folder-size
+	python setup.py install
+
+In python console:
+
+	> from dropbox_folder_size import FolderSize
+	> f = FolderSize('<DROPBOX_TOKEN>')
+	> f.get_sizes()
+
+# Usage (Docker)
 
 Generate Dropbox access token: https://blogs.dropbox.com/developers/2014/05/generate-an-access-token-for-your-own-account/
 
-Create .env file with:
+Create .env file in dropbox-folder-size directory with:
 
-	DROPBOX_TOKEN=[token]
+	echo DROPBOX_TOKEN=[token] > .env
 
 Build Docker image with:
 
@@ -22,7 +35,20 @@ Run with:
 
 # Development
 
+## Docker
+
 You may want to add following to map source folder inside container:
 
     volumes:
         - [HOST_FOLDER]/dropbox-folder-size/src:/home/dropbox-folder-size/src
+
+To run container:
+
+	docker-compose up
+
+## virtualenv
+
+Install package in development mode (create symlink to source):
+
+	python setup.py develop
+

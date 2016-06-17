@@ -9,4 +9,4 @@ ADD . .
 RUN pip3 install -r requirements.txt
 
 #CMD ["tail","-f","/dev/null"]
-CMD python src/main.py
+CMD python dropbox_folder_size/main.py

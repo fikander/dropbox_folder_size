@@ -5,4 +5,4 @@ services:
         build: .
         env_file: .env
         restart: never
-        command: python src/main.py
+        command: python dropbox_folder_size/main.py
