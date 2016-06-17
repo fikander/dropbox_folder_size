@@ -4,6 +4,8 @@ Simple tool to print sizes of Dropbox folders sorted by size.
 
 # Usage
 
+Generate Dropbox access token: https://blogs.dropbox.com/developers/2014/05/generate-an-access-token-for-your-own-account/
+
 Create .env file with:
 
 	DROPBOX_TOKEN=[token]

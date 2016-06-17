@@ -1,9 +1,9 @@
 FROM python:latest
 
-RUN mkdir -p /home/dropbox-file-size
-ENV HOME /home/dropbox-file-size
+RUN mkdir -p /home/dropbox-folder-size
+ENV HOME /home/dropbox-folder-size
 
-WORKDIR /home/dropbox-file-size
+WORKDIR /home/dropbox-folder-size
 ADD . .
 
 RUN pip3 install -r requirements.txt

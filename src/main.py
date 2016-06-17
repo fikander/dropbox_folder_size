@@ -10,7 +10,6 @@ def print_sizes(client):
         result = client.delta(cursor)
         for path, metadata in result['entries']:
             sizes[path] = metadata['bytes'] if metadata else 0
-            # print('%s: %d' % (path, sizes[path]))
         cursor = result['cursor']
 
     foldersizes = defaultdict(lambda: 0)
@@ -21,11 +20,13 @@ def print_sizes(client):
             if folder == '': folder = '/'
             foldersizes[folder] += size
 
-    for folder in reversed(sorted(foldersizes.keys(), key=lambda x: foldersizes[x])):
-        print('%s: %d' % (folder, foldersizes[folder]))
+    return foldersizes
 
 
 if __name__ == '__main__':
     token = os.getenv('DROPBOX_TOKEN')
     client = DropboxClient(token)
-    print_sizes(client)
+    print('scanning folders...')
+    foldersizes = get_sizes(client)
+    for folder in reversed(sorted(foldersizes.keys(), key=lambda x: foldersizes[x])):
+        print('%s: %d' % (folder, foldersizes[folder]))
